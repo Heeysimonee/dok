@@ -1,10 +1,9 @@
 import Image from "next/image";
 import dok_logo from "@/../public/DOK.svg";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Landing } from "./_components/Landing";
 import { Features } from "./_components/Features";
-import prisma from "@/../lib/prisma";
+import prisma from "@/lib/prisma";
 
 const navLinks = [
   { name: "Features", href: "#features" },
@@ -25,15 +24,25 @@ export default async function Home() {
             <Link
               key={href}
               href={href}
-              className="px-3 py-2 hover:border-b hover:border-slate-900 hover:font-semibold transition"
+              className="px-3 py-2 hover:border-b hover:border-slate-900 hover:font-semibold transition-all"
             >
               {name}
             </Link>
           ))}
         </div>
-        <div className="w-1/6 flex items-center gap-5 justify-end">
-          <Button variant="ghost">Login</Button>
-          <Button>Get DOK free</Button>
+        <div className="w-1/6 flex items-center gap-5 justify-end font-light">
+          <Link
+            href={"/login"}
+            className="bg-primary py-2 px-4 rounded-md hover:bg-primary/90 text-white"
+          >
+            Login
+          </Link>
+          <Link
+            className="bg-white py-2 px-4 rounded-md hover:bg-accent transition-all"
+            href="/sign-up"
+          >
+            Get DOK free
+          </Link>
         </div>
       </header>
       <Landing />
